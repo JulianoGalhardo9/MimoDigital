@@ -33,6 +33,42 @@
             "related": ".pdb;.xml"
           }
         }
+      },
+      "MimoDigital.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "MimoDigital.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MimoDigital.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MimoDigital.Application.dll": {}
+        }
+      },
+      "MimoDigital.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/MimoDigital.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MimoDigital.Domain.dll": {}
+        }
+      },
+      "MimoDigital.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "MimoDigital.Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MimoDigital.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MimoDigital.Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -67,11 +103,28 @@
         "microsoft.openapi.1.6.17.nupkg.sha512",
         "microsoft.openapi.nuspec"
       ]
+    },
+    "MimoDigital.Application/1.0.0": {
+      "type": "project",
+      "path": "../MimoDigital.Application/MimoDigital.Application.csproj",
+      "msbuildProject": "../MimoDigital.Application/MimoDigital.Application.csproj"
+    },
+    "MimoDigital.Domain/1.0.0": {
+      "type": "project",
+      "path": "../MimoDigital.Domain/MimoDigital.Domain.csproj",
+      "msbuildProject": "../MimoDigital.Domain/MimoDigital.Domain.csproj"
+    },
+    "MimoDigital.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../MimoDigital.Infrastructure/MimoDigital.Infrastructure.csproj",
+      "msbuildProject": "../MimoDigital.Infrastructure/MimoDigital.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "Microsoft.AspNetCore.OpenApi >= 9.0.14"
+      "Microsoft.AspNetCore.OpenApi >= 9.0.14",
+      "MimoDigital.Application >= 1.0.0",
+      "MimoDigital.Infrastructure >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -98,7 +151,14 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.Application/MimoDigital.Application.csproj": {
+              "projectPath": "/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.Application/MimoDigital.Application.csproj"
+            },
+            "/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.Infrastructure/MimoDigital.Infrastructure.csproj": {
+              "projectPath": "/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.Infrastructure/MimoDigital.Infrastructure.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
