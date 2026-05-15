@@ -373,9 +373,12 @@ Program.cs
  microsoft.entityframeworkcore.abstractions/9.0.5/lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll
  microsoft.entityframeworkcore.relational/9.0.1/lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll
  microsoft.entityframeworkcore/9.0.5/lib/net8.0/Microsoft.EntityFrameworkCore.dll
- microsoft.openapi/1.6.17/lib/netstandard2.0/Microsoft.OpenApi.dll
+ microsoft.openapi/2.4.1/lib/net8.0/Microsoft.OpenApi.dll
  npgsql.entityframeworkcore.postgresql/9.0.4/lib/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
  npgsql/9.0.3/lib/net8.0/Npgsql.dll
+ swashbuckle.aspnetcore.swagger/10.1.7/lib/net9.0/Swashbuckle.AspNetCore.Swagger.dll
+ swashbuckle.aspnetcore.swaggergen/10.1.7/lib/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+ swashbuckle.aspnetcore.swaggerui/10.1.7/lib/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 
 [analyzerReferences]
 <DOTNET>/packs/Microsoft.AspNetCore.App.Ref/9.0.14/analyzers/dotnet/cs/
