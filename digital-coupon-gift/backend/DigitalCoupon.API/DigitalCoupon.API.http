@@ -1,6 +1,0 @@
-@DigitalCoupon.API_HostAddress = http://localhost:5225
-
-GET {{DigitalCoupon.API_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
