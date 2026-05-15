@@ -54,6 +54,7 @@ TemporaryDependencyNodeTargetIdentifier=net9.0
 
 [sourceFiles]
 Common/Interfaces/IApplicationDbContext.cs
+DependencyInjection.cs
 Features/CouponBooks/Commands/CreateCouponBook/
  CreateCouponBookCommand.cs
  CreateCouponBookHandler.cs
