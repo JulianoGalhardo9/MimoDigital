@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "MimoDigital.Domain/1.0.0": {
+        "runtime": {
+          "MimoDigital.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MimoDigital.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
