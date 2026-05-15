@@ -61,6 +61,9 @@ CouponBooks/Queries/GetCouponBookBySlug/
  CouponBookDto.cs
  GetCouponBookBySlugHandler.cs
  GetCouponBookBySlugQuery.cs
+Coupons/Commands/ClaimCoupon/
+ ClaimCouponCommand.cs
+ ClaimCouponHandler.cs
 obj/Debug/net9.0/
  .NETCoreApp,Version=v9.0.AssemblyAttributes.cs
  MimoDigital.Application.AssemblyInfo.cs
