@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using MimoDigital.Application.CouponBooks.Commands.CreateCouponBook;
+using MimoDigital.Application.CouponBooks.Queries.GetCouponBookBySlug;
 
 namespace MimoDigital.API.Controllers;
 
@@ -20,5 +21,16 @@ public class CouponBookController : ControllerBase
     {
         var slug = await _mediator.Send(command);
         return Ok(new { slug });
+    }
+
+    [HttpGet("{slug}")]
+    public async Task<ActionResult<CouponBookDto>> GetBySlug(string slug)
+    {
+        var query = new GetCouponBookBySlugQuery(slug);
+        var result = await _mediator.Send(query);
+
+        if (result == null) return NotFound();
+
+        return Ok(result);
     }
 }

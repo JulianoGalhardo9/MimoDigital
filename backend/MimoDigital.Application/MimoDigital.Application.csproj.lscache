@@ -57,6 +57,10 @@ Common/Interfaces/IApplicationDbContext.cs
 CouponBooks/Commands/CreateCouponBook/
  CreateCouponBookCommand.cs
  CreateCouponBookHandler.cs
+CouponBooks/Queries/GetCouponBookBySlug/
+ CouponBookDto.cs
+ GetCouponBookBySlugHandler.cs
+ GetCouponBookBySlugQuery.cs
 obj/Debug/net9.0/
  .NETCoreApp,Version=v9.0.AssemblyAttributes.cs
  MimoDigital.Application.AssemblyInfo.cs
