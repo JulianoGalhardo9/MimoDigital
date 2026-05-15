@@ -53,6 +53,7 @@ TemporaryDependencyNodeTargetIdentifier=net9.0
 /warnaserror+:NU1605,SYSLIB0011
 
 [sourceFiles]
+Controllers/CouponBookController.cs
 obj/Debug/net9.0/
  .NETCoreApp,Version=v9.0.AssemblyAttributes.cs
  MimoDigital.API.AssemblyInfo.cs
@@ -380,13 +381,13 @@ Program.cs
  microsoft.identitymodel.jsonwebtokens/8.14.0/lib/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll
  microsoft.identitymodel.logging/8.14.0/lib/net9.0/Microsoft.IdentityModel.Logging.dll
  microsoft.identitymodel.tokens/8.14.0/lib/net9.0/Microsoft.IdentityModel.Tokens.dll
- microsoft.openapi/2.4.1/lib/net8.0/Microsoft.OpenApi.dll
+ microsoft.openapi/1.6.22/lib/netstandard2.0/Microsoft.OpenApi.dll
  nanoid/3.1.0/lib/net8.0/Nanoid.dll
  npgsql.entityframeworkcore.postgresql/9.0.4/lib/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
  npgsql/9.0.3/lib/net8.0/Npgsql.dll
- swashbuckle.aspnetcore.swagger/10.1.7/lib/net9.0/Swashbuckle.AspNetCore.Swagger.dll
- swashbuckle.aspnetcore.swaggergen/10.1.7/lib/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll
- swashbuckle.aspnetcore.swaggerui/10.1.7/lib/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+ swashbuckle.aspnetcore.swagger/7.0.0/lib/net9.0/Swashbuckle.AspNetCore.Swagger.dll
+ swashbuckle.aspnetcore.swaggergen/7.0.0/lib/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+ swashbuckle.aspnetcore.swaggerui/7.0.0/lib/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll
  system.diagnostics.diagnosticsource/10.0.0/lib/net9.0/System.Diagnostics.DiagnosticSource.dll
 
 [analyzerReferences]

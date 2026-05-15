@@ -1,11 +1,11 @@
+/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.Domain/bin/Debug/net9.0/MimoDigital.Domain.deps.json
+/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.Domain/bin/Debug/net9.0/MimoDigital.Domain.dll
+/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.Domain/bin/Debug/net9.0/MimoDigital.Domain.pdb
 /Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.Domain/obj/Debug/net9.0/MimoDigital.Domain.GeneratedMSBuildEditorConfig.editorconfig
 /Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.Domain/obj/Debug/net9.0/MimoDigital.Domain.AssemblyInfoInputs.cache
 /Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.Domain/obj/Debug/net9.0/MimoDigital.Domain.AssemblyInfo.cs
 /Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.Domain/obj/Debug/net9.0/MimoDigital.Domain.csproj.CoreCompileInputs.cache
 /Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.Domain/obj/Debug/net9.0/MimoDigital.Domain.sourcelink.json
-/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.Domain/bin/Debug/net9.0/MimoDigital.Domain.deps.json
-/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.Domain/bin/Debug/net9.0/MimoDigital.Domain.dll
-/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.Domain/bin/Debug/net9.0/MimoDigital.Domain.pdb
 /Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.Domain/obj/Debug/net9.0/MimoDigital.Domain.dll
 /Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.Domain/obj/Debug/net9.0/refint/MimoDigital.Domain.dll
 /Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.Domain/obj/Debug/net9.0/MimoDigital.Domain.pdb
