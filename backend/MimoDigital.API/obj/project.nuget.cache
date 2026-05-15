@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "A2BDHYVG/Q8=",
+  "success": true,
+  "projectFilePath": "/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.API/MimoDigital.API.csproj",
+  "expectedPackageFiles": [
+    "/Users/julianogalhardo/.nuget/packages/microsoft.aspnetcore.openapi/9.0.14/microsoft.aspnetcore.openapi.9.0.14.nupkg.sha512",
+    "/Users/julianogalhardo/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
