@@ -23,7 +23,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("DefaultPolicy", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173") // Porta padrão do Vite
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
+
+app.UseCors("DefaultPolicy");
 
 if (app.Environment.IsDevelopment())
 {
