@@ -1,12 +1,23 @@
 using Microsoft.EntityFrameworkCore;
+using MimoDigital.Application.Common.Interfaces;
 using MimoDigital.Infrastructure.Persistence;
+using MimoDigital.Application.CouponBooks.Commands.CreateCouponBook; // Namespace de um dos handlers
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Adicionar a conexão com PostgreSQL
+// 1. Configurar Banco de Dados
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
+
+// 2. Mapear a Interface para o Contexto Real (Scoped)
+builder.Services.AddScoped<IApplicationDbContext>(provider => 
+    provider.GetRequiredService<ApplicationDbContext>());
+
+// 3. Registrar MediatR (Apontando para o projeto onde estão os Handlers)
+builder.Services.AddMediatR(cfg => {
+    cfg.RegisterServicesFromAssembly(typeof(CreateCouponBookCommand).Assembly);
+});
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
