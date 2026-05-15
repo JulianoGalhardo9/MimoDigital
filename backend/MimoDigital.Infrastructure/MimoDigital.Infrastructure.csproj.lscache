@@ -53,6 +53,10 @@ TemporaryDependencyNodeTargetIdentifier=net9.0
 /warnaserror+:NU1605,SYSLIB0011
 
 [sourceFiles]
+Migrations/
+ 20260515190930_InitialCreate.cs
+ 20260515190930_InitialCreate.Designer.cs
+ ApplicationDbContextModelSnapshot.cs
 obj/Debug/net9.0/
  .NETCoreApp,Version=v9.0.AssemblyAttributes.cs
  MimoDigital.Infrastructure.AssemblyInfo.cs
