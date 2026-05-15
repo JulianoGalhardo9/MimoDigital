@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using MimoDigital.Application.Common.Interfaces;
 using MimoDigital.Domain.Entities;
 
 namespace MimoDigital.Infrastructure.Persistence;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : DbContext, IApplicationDbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 

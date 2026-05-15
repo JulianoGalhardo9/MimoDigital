@@ -96,7 +96,6 @@ Persistence/ApplicationDbContext.cs
  System.Data.dll
  System.Diagnostics.Contracts.dll
  System.Diagnostics.Debug.dll
- System.Diagnostics.DiagnosticSource.dll
  System.Diagnostics.FileVersionInfo.dll
  System.Diagnostics.Process.dll
  System.Diagnostics.StackTrace.dll
@@ -233,20 +232,30 @@ Persistence/ApplicationDbContext.cs
  System.Xml.XPath.XDocument.dll
  WindowsBase.dll
 <NUGET>/
+ fluentvalidation.dependencyinjectionextensions/12.1.1/lib/net8.0/FluentValidation.DependencyInjectionExtensions.dll
+ fluentvalidation/12.1.1/lib/net8.0/FluentValidation.dll
+ mediatr.contracts/2.0.1/lib/netstandard2.0/MediatR.Contracts.dll
+ mediatr/14.1.0/lib/net9.0/MediatR.dll
  microsoft.entityframeworkcore.abstractions/9.0.5/lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll
  microsoft.entityframeworkcore.relational/9.0.5/lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll
  microsoft.entityframeworkcore/9.0.5/lib/net8.0/Microsoft.EntityFrameworkCore.dll
  microsoft.extensions.caching.abstractions/9.0.5/lib/net9.0/Microsoft.Extensions.Caching.Abstractions.dll
  microsoft.extensions.caching.memory/9.0.5/lib/net9.0/Microsoft.Extensions.Caching.Memory.dll
  microsoft.extensions.configuration.abstractions/9.0.5/lib/net9.0/Microsoft.Extensions.Configuration.Abstractions.dll
- microsoft.extensions.dependencyinjection.abstractions/9.0.5/lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+ microsoft.extensions.dependencyinjection.abstractions/10.0.0/lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
  microsoft.extensions.dependencyinjection/9.0.5/lib/net9.0/Microsoft.Extensions.DependencyInjection.dll
- microsoft.extensions.logging.abstractions/9.0.5/lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
+ microsoft.extensions.logging.abstractions/10.0.0/lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
  microsoft.extensions.logging/9.0.5/lib/net9.0/Microsoft.Extensions.Logging.dll
  microsoft.extensions.options/9.0.5/lib/net9.0/Microsoft.Extensions.Options.dll
  microsoft.extensions.primitives/9.0.5/lib/net9.0/Microsoft.Extensions.Primitives.dll
+ microsoft.identitymodel.abstractions/8.14.0/lib/net9.0/Microsoft.IdentityModel.Abstractions.dll
+ microsoft.identitymodel.jsonwebtokens/8.14.0/lib/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll
+ microsoft.identitymodel.logging/8.14.0/lib/net9.0/Microsoft.IdentityModel.Logging.dll
+ microsoft.identitymodel.tokens/8.14.0/lib/net9.0/Microsoft.IdentityModel.Tokens.dll
+ nanoid/3.1.0/lib/net8.0/Nanoid.dll
  npgsql.entityframeworkcore.postgresql/9.0.4/lib/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
  npgsql/9.0.3/lib/net8.0/Npgsql.dll
+ system.diagnostics.diagnosticsource/10.0.0/lib/net9.0/System.Diagnostics.DiagnosticSource.dll
 
 [analyzerReferences]
 <DOTNET>/packs/Microsoft.NETCore.App.Ref/9.0.14/analyzers/dotnet/cs/
@@ -264,7 +273,7 @@ Persistence/ApplicationDbContext.cs
  Microsoft.CodeAnalysis.CSharp.Analyzers.dll
 <NUGET>/
  microsoft.entityframeworkcore.analyzers/9.0.5/analyzers/dotnet/cs/Microsoft.EntityFrameworkCore.Analyzers.dll
- microsoft.extensions.logging.abstractions/9.0.5/analyzers/dotnet/roslyn4.4/cs/Microsoft.Extensions.Logging.Generators.dll
+ microsoft.extensions.logging.abstractions/10.0.0/analyzers/dotnet/roslyn4.4/cs/Microsoft.Extensions.Logging.Generators.dll
  microsoft.extensions.options/9.0.5/analyzers/dotnet/roslyn4.4/cs/Microsoft.Extensions.Options.SourceGeneration.dll
 
 [analyzerConfigFiles]

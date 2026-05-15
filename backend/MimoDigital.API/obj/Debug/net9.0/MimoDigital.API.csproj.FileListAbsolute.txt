@@ -137,3 +137,13 @@
 /Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.API/bin/Debug/net9.0/tr/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 /Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.API/bin/Debug/net9.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 /Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.API/bin/Debug/net9.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.API/bin/Debug/net9.0/FluentValidation.dll
+/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.API/bin/Debug/net9.0/FluentValidation.DependencyInjectionExtensions.dll
+/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.API/bin/Debug/net9.0/MediatR.dll
+/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.API/bin/Debug/net9.0/MediatR.Contracts.dll
+/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.API/bin/Debug/net9.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.API/bin/Debug/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.API/bin/Debug/net9.0/Microsoft.IdentityModel.Logging.dll
+/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.API/bin/Debug/net9.0/Microsoft.IdentityModel.Tokens.dll
+/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.API/bin/Debug/net9.0/Nanoid.dll
+/Users/julianogalhardo/Documents/MimoDigital/backend/MimoDigital.API/bin/Debug/net9.0/System.Diagnostics.DiagnosticSource.dll
