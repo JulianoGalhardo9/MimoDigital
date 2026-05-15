@@ -165,7 +165,6 @@ Program.cs
  Microsoft.Extensions.Configuration.KeyPerFile.dll
  Microsoft.Extensions.Configuration.UserSecrets.dll
  Microsoft.Extensions.Configuration.Xml.dll
- Microsoft.Extensions.DependencyInjection.Abstractions.dll
  Microsoft.Extensions.DependencyInjection.dll
  Microsoft.Extensions.Diagnostics.Abstractions.dll
  Microsoft.Extensions.Diagnostics.dll
@@ -369,11 +368,17 @@ Program.cs
  System.Xml.XPath.XDocument.dll
  WindowsBase.dll
 <NUGET>/
+ fluentvalidation.dependencyinjectionextensions/11.11.0/lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll
+ fluentvalidation/12.1.1/lib/net8.0/FluentValidation.dll
+ mediatr.contracts/2.0.1/lib/netstandard2.0/MediatR.Contracts.dll
+ mediatr/12.4.1/lib/net6.0/MediatR.dll
  microsoft.aspnetcore.openapi/9.0.14/lib/net9.0/Microsoft.AspNetCore.OpenApi.dll
  microsoft.entityframeworkcore.abstractions/9.0.0/lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll
  microsoft.entityframeworkcore.relational/9.0.0/lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll
  microsoft.entityframeworkcore/9.0.0/lib/net8.0/Microsoft.EntityFrameworkCore.dll
+ microsoft.extensions.dependencyinjection.abstractions/10.0.8/lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
  microsoft.openapi/1.6.17/lib/netstandard2.0/Microsoft.OpenApi.dll
+ nanoid/3.1.0/lib/net8.0/Nanoid.dll
  npgsql.entityframeworkcore.postgresql/9.0.0/lib/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
  npgsql/9.0.0/lib/net8.0/Npgsql.dll
 

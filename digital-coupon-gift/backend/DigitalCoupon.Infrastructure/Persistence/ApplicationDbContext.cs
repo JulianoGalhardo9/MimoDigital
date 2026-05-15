@@ -1,5 +1,6 @@
 using DigitalCoupon.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using DigitalCoupon.Application.Common.Interfaces;
 
 namespace DigitalCoupon.Infrastructure.Persistence;
 

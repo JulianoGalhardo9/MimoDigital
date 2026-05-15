@@ -229,18 +229,23 @@ Persistence/ApplicationDbContext.cs
  System.Xml.XPath.XDocument.dll
  WindowsBase.dll
 <NUGET>/
+ fluentvalidation.dependencyinjectionextensions/11.11.0/lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll
+ fluentvalidation/12.1.1/lib/net8.0/FluentValidation.dll
+ mediatr.contracts/2.0.1/lib/netstandard2.0/MediatR.Contracts.dll
+ mediatr/12.4.1/lib/net6.0/MediatR.dll
  microsoft.entityframeworkcore.abstractions/9.0.0/lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll
  microsoft.entityframeworkcore.relational/9.0.0/lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll
  microsoft.entityframeworkcore/9.0.0/lib/net8.0/Microsoft.EntityFrameworkCore.dll
  microsoft.extensions.caching.abstractions/9.0.0/lib/net9.0/Microsoft.Extensions.Caching.Abstractions.dll
  microsoft.extensions.caching.memory/9.0.0/lib/net9.0/Microsoft.Extensions.Caching.Memory.dll
  microsoft.extensions.configuration.abstractions/9.0.0/lib/net9.0/Microsoft.Extensions.Configuration.Abstractions.dll
- microsoft.extensions.dependencyinjection.abstractions/9.0.0/lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+ microsoft.extensions.dependencyinjection.abstractions/10.0.8/lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
  microsoft.extensions.dependencyinjection/9.0.0/lib/net9.0/Microsoft.Extensions.DependencyInjection.dll
  microsoft.extensions.logging.abstractions/9.0.0/lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
  microsoft.extensions.logging/9.0.0/lib/net9.0/Microsoft.Extensions.Logging.dll
  microsoft.extensions.options/9.0.0/lib/net9.0/Microsoft.Extensions.Options.dll
  microsoft.extensions.primitives/9.0.0/lib/net9.0/Microsoft.Extensions.Primitives.dll
+ nanoid/3.1.0/lib/net8.0/Nanoid.dll
  npgsql.entityframeworkcore.postgresql/9.0.0/lib/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
  npgsql/9.0.0/lib/net8.0/Npgsql.dll
 
