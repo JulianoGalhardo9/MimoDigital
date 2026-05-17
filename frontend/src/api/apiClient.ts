@@ -1,29 +1,19 @@
 import axios from 'axios';
-import nprogress from 'nprogress';
-import 'nprogress/nprogress.css';
+
+// Força a leitura da URL do Render injetada pela Vercel
+const envUrl = import.meta.env.VITE_API_URL;
+
+// Se a variável existir, usa ela. Se não (local), usa o proxy '/api'
+const baseURL = envUrl ? `${envUrl.replace(/\/$/, '')}/api` : '/api';
 
 const apiClient = axios.create({
-  // Sem localhost, sem porta. Apenas a rota relativa.
-  baseURL: '/api', 
+  baseURL: baseURL,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-apiClient.interceptors.request.use((config) => {
-  nprogress.start();
-  return config;
-});
-
-apiClient.interceptors.response.use(
-  (response) => {
-    nprogress.done();
-    return response;
-  },
-  (error) => {
-    nprogress.done();
-    return Promise.reject(error);
-  }
-);
+// Log temporário para você ver no F12 do navegador para onde ele está apontando
+console.log("Axios conectado em: ", baseURL);
 
 export default apiClient;
