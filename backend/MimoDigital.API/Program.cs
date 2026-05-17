@@ -5,21 +5,17 @@ using MimoDigital.Application.CouponBooks.Commands.CreateCouponBook;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. Configurar Banco de Dados
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 
-// 2. Mapear a Interface para o Contexto Real
 builder.Services.AddScoped<IApplicationDbContext>(provider =>
     provider.GetRequiredService<ApplicationDbContext>());
 
-// 3. Registrar MediatR
 builder.Services.AddMediatR(cfg => {
     cfg.RegisterServicesFromAssembly(typeof(CreateCouponBookCommand).Assembly);
 });
 
-// 4. CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("DefaultPolicy", policy =>
@@ -36,15 +32,28 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Swagger em todos os ambientes (útil para testar no Render)
 app.UseSwagger();
 app.UseSwaggerUI();
 
-// CORS antes de tudo
+// Middleware manual de CORS para garantir mesmo em caso de erro 500
+app.Use(async (context, next) =>
+{
+    context.Response.Headers.Append("Access-Control-Allow-Origin", "*");
+    context.Response.Headers.Append("Access-Control-Allow-Headers", "*");
+    context.Response.Headers.Append("Access-Control-Allow-Methods", "*");
+
+    if (context.Request.Method == "OPTIONS")
+    {
+        context.Response.StatusCode = 200;
+        return;
+    }
+
+    await next();
+});
+
 app.UseCors("DefaultPolicy");
 
-// HTTPS redirect desativado (Render e Vercel já fazem isso no load balancer)
-// app.UseHttpsRedirection();
+// SEM app.UseHttpsRedirection()
 
 app.UseAuthorization();
 app.MapControllers();
