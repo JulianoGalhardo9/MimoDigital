@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom';
 import { useCouponBook } from '../hooks/useCouponBook';
 import { motion } from 'framer-motion';
 import { Ticket, CheckCircle2 } from 'lucide-react';
+import type { CouponItem } from '../types'; // Importando o tipo explicitamente
+ // Importando o tipo explicitamente
 
 export default function BookView() {
   const { slug } = useParams<{ slug: string }>();
@@ -20,7 +22,7 @@ export default function BookView() {
       </header>
 
       <div className="grid gap-4 max-w-md mx-auto">
-        {book?.coupons.map((coupon) => (
+        {book?.coupons.map((coupon: CouponItem) => ( // Tipagem adicionada aqui
           <motion.div
             key={coupon.id}
             whileHover={{ scale: 1.02 }}
