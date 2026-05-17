@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MimoDigital.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+43e509ad78a734a3f41545229b1f43a767ab9726")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+09db5387a86ff0879cbc40405e0881c09143152f")]
 [assembly: System.Reflection.AssemblyProductAttribute("MimoDigital.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MimoDigital.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
