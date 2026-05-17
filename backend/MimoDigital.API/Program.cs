@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MimoDigital.Application.Common.Interfaces;
 using MimoDigital.Infrastructure.Persistence;
-using MimoDigital.Application.CouponBooks.Commands.CreateCouponBook; // Namespace de um dos handlers
+using MimoDigital.Application.CouponBooks.Commands.CreateCouponBook;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,19 +10,16 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 
-// 2. Mapear a Interface para o Contexto Real (Scoped)
-builder.Services.AddScoped<IApplicationDbContext>(provider => 
+// 2. Mapear a Interface para o Contexto Real
+builder.Services.AddScoped<IApplicationDbContext>(provider =>
     provider.GetRequiredService<ApplicationDbContext>());
 
-// 3. Registrar MediatR (Apontando para o projeto onde estão os Handlers)
+// 3. Registrar MediatR
 builder.Services.AddMediatR(cfg => {
     cfg.RegisterServicesFromAssembly(typeof(CreateCouponBookCommand).Assembly);
 });
 
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
+// 4. CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("DefaultPolicy", policy =>
@@ -33,17 +30,22 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
-app.UseCors("DefaultPolicy"); 
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// Swagger em todos os ambientes (útil para testar no Render)
+app.UseSwagger();
+app.UseSwaggerUI();
 
-app.UseHttpsRedirection();
+// CORS antes de tudo
+app.UseCors("DefaultPolicy");
+
+// HTTPS redirect desativado (Render e Vercel já fazem isso no load balancer)
+// app.UseHttpsRedirection();
+
 app.UseAuthorization();
 app.MapControllers();
-
 app.Run();
