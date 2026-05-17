@@ -4,8 +4,10 @@ EXPOSE 8080
 
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
-COPY ["MimoDigital.API.csproj", "."]
-RUN dotnet restore "./MimoDigital.API.csproj"
+
+COPY MimoDigital.API.csproj .
+RUN dotnet restore "MimoDigital.API.csproj"
+
 COPY . .
 RUN dotnet build "MimoDigital.API.csproj" -c Release -o /app/build
 
