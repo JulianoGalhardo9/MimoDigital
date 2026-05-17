@@ -27,15 +27,14 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("DefaultPolicy", policy =>
     {
-        policy.WithOrigins("http://localhost:5173") // Porta padrão do Vite
+        policy.AllowAnyOrigin()
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
 });
 
 var app = builder.Build();
-
-app.UseCors("DefaultPolicy");
+app.UseCors("DefaultPolicy"); 
 
 if (app.Environment.IsDevelopment())
 {

@@ -1,0 +1,53 @@
+# ==========================================
+# Ferramentas do Sistema e Editores
+# ==========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.sublime-project
+*.sublime-workspace
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# ==========================================
+# Frontend (Node / Vite / React)
+# ==========================================
+**/node_modules/
+**/dist/
+**/build/
+.env
+.env.local
+.env.*.local
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ==========================================
+# Backend (.NET / C#)
+# ==========================================
+**/bin/
+**/obj/
+*.user
+*.userosscache
+*.sln.docstates
+.cloudforge/
+_ReSharper*/
+*.resharper
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.targets
+
+# Arquivos de segredos locais do .NET
+**/appsettings.Development.json
+
+# ==========================================
+# Docker
+# ==========================================
+.docker/
