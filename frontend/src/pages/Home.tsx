@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import apiClient from '../api/apiClient';
-import { Plus, Trash2, Gift } from 'lucide-react';
+import { Plus, Trash2 } from 'lucide-react';
 
 interface NewCoupon {
   title: string;
@@ -15,8 +15,8 @@ export default function Home() {
   const [description, setDescription] = useState('');
   const [coupons, setCoupons] = useState<NewCoupon[]>([{ title: '', description: '' }]);
   const [generatedLink, setGeneratedLink] = useState('');
+  const [copied, setCopied] = useState(false);
 
-  // Mutation para disparar o POST de criação
   const createBookMutation = useMutation({
     mutationFn: async () => {
       const payload = { title, description, coupons: coupons.filter(c => c.title) };
@@ -24,9 +24,8 @@ export default function Home() {
       return data.slug;
     },
     onSuccess: (slug) => {
-      // Gera o link completo baseado na URL atual
       setGeneratedLink(`${window.location.origin}/book/${slug}`);
-    }
+    },
   });
 
   const handleAddCoupon = () => {
@@ -49,119 +48,283 @@ export default function Home() {
     createBookMutation.mutate();
   };
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText(generatedLink);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50 p-4 flex flex-col items-center justify-center py-12">
-      <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-100 w-full max-w-md">
-        <header className="text-center mb-6">
-          <div className="bg-pink-100 p-3 rounded-full inline-block mb-2 text-pink-500">
-            <Gift size={28} />
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+        .home-wrap {
+          font-family: 'DM Sans', sans-serif;
+          min-height: 100vh;
+          background: #1a0a0f;
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          padding: 32px 16px 64px;
+          position: relative;
+          overflow: hidden;
+        }
+        .home-orb1 {
+          position: fixed; width: 500px; height: 500px; border-radius: 50%;
+          background: radial-gradient(circle, rgba(190,60,90,0.16) 0%, transparent 70%);
+          top: -120px; right: -100px; pointer-events: none; z-index: 0;
+        }
+        .home-orb2 {
+          position: fixed; width: 350px; height: 350px; border-radius: 50%;
+          background: radial-gradient(circle, rgba(220,120,80,0.1) 0%, transparent 70%);
+          bottom: 0; left: -80px; pointer-events: none; z-index: 0;
+        }
+        .home-card {
+          background: #231118;
+          border: 1px solid rgba(200,100,120,0.18);
+          border-radius: 24px;
+          width: 100%; max-width: 420px;
+          padding: 36px 32px 40px;
+          position: relative; z-index: 1;
+          margin-top: 16px;
+        }
+        .home-header { text-align: center; margin-bottom: 32px; }
+        .home-icon {
+          width: 56px; height: 56px; border-radius: 50%;
+          background: linear-gradient(135deg, #c23a5a, #e0784a);
+          display: flex; align-items: center; justify-content: center;
+          margin: 0 auto 16px; font-size: 24px;
+        }
+        .home-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 26px; font-weight: 700;
+          color: #f5e8e0; margin: 0 0 6px; letter-spacing: -0.3px;
+        }
+        .home-subtitle { font-size: 13px; color: rgba(245,232,224,0.45); font-weight: 300; margin: 0; }
+
+        .home-label {
+          display: block; font-size: 11px; font-weight: 500;
+          letter-spacing: 0.8px; color: rgba(245,232,224,0.5);
+          text-transform: uppercase; margin-bottom: 8px;
+        }
+        .home-input, .home-textarea {
+          width: 100%; box-sizing: border-box;
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(200,100,120,0.2);
+          border-radius: 12px;
+          color: #f5e8e0;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 14px; padding: 12px 16px; outline: none;
+          transition: border-color 0.2s;
+        }
+        .home-input::placeholder, .home-textarea::placeholder { color: rgba(245,232,224,0.25); }
+        .home-input:focus, .home-textarea:focus { border-color: rgba(200,80,110,0.6); }
+        .home-textarea { resize: none; height: 72px; line-height: 1.5; }
+        .home-field { margin-bottom: 20px; }
+        .home-divider { border: none; border-top: 1px solid rgba(200,100,120,0.12); margin: 24px 0; }
+
+        .home-coupons-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+        .home-coupons-label { font-size: 11px; font-weight: 500; letter-spacing: 0.8px; color: rgba(245,232,224,0.5); text-transform: uppercase; }
+        .home-add-btn {
+          display: flex; align-items: center; gap: 5px;
+          font-size: 12px; font-weight: 500; color: #e07090;
+          background: none; border: none; cursor: pointer; padding: 0;
+          font-family: 'DM Sans', sans-serif; transition: color 0.2s;
+        }
+        .home-add-btn:hover { color: #f090a8; }
+
+        .home-coupon-list { display: flex; flex-direction: column; gap: 10px; max-height: 260px; overflow-y: auto; padding-right: 2px; }
+        .home-coupon-item {
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(200,100,120,0.14);
+          border-radius: 14px; padding: 14px 14px 12px; position: relative;
+        }
+        .home-coupon-field {
+          width: 100%; box-sizing: border-box;
+          background: transparent; border: none;
+          border-bottom: 1px solid rgba(200,100,120,0.15);
+          color: #f5e8e0; font-family: 'DM Sans', sans-serif;
+          font-size: 13px; padding: 4px 28px 8px 0; outline: none; margin-bottom: 8px;
+        }
+        .home-coupon-field:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .home-coupon-field::placeholder { color: rgba(245,232,224,0.25); }
+        .home-remove-btn {
+          position: absolute; top: 10px; right: 12px;
+          background: none; border: none; cursor: pointer;
+          color: rgba(245,232,224,0.2); transition: color 0.2s; padding: 2px;
+          display: flex; align-items: center;
+        }
+        .home-remove-btn:hover { color: #e05050; }
+
+        .home-submit {
+          width: 100%; margin-top: 28px;
+          background: linear-gradient(135deg, #c23a5a 0%, #d96040 100%);
+          border: none; border-radius: 14px;
+          color: #fff; font-family: 'Playfair Display', serif;
+          font-size: 16px; font-weight: 700; font-style: italic;
+          padding: 16px; cursor: pointer; letter-spacing: 0.2px;
+          transition: opacity 0.2s, transform 0.15s;
+        }
+        .home-submit:hover:not(:disabled) { opacity: 0.92; transform: translateY(-1px); }
+        .home-submit:active:not(:disabled) { transform: scale(0.98); }
+        .home-submit:disabled { background: rgba(255,255,255,0.08); color: rgba(245,232,224,0.3); cursor: not-allowed; font-style: normal; }
+
+        .home-success { text-align: center; padding: 20px 0 8px; }
+        .home-success-icon { font-size: 40px; margin-bottom: 14px; }
+        .home-success-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 24px; font-weight: 700; color: #f5e8e0; margin: 0 0 8px;
+        }
+        .home-success-desc { font-size: 13px; color: rgba(245,232,224,0.45); margin: 0 0 20px; }
+        .home-link-box {
+          background: rgba(255,255,255,0.05); border: 1px solid rgba(200,100,120,0.2);
+          border-radius: 12px; padding: 12px 16px;
+          font-size: 12px; font-family: monospace;
+          color: #e07090; word-break: break-all;
+          margin-bottom: 6px; text-align: left; cursor: pointer;
+          transition: background 0.2s;
+        }
+        .home-link-box:hover { background: rgba(255,255,255,0.08); }
+        .home-copy-hint { font-size: 11px; color: rgba(245,232,224,0.3); margin: 0 0 20px; }
+        .home-actions { display: flex; gap: 10px; }
+        .home-btn-dark {
+          flex: 1; background: rgba(245,232,224,0.08);
+          border: 1px solid rgba(245,232,224,0.15);
+          border-radius: 12px; color: #f5e8e0;
+          font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+          padding: 12px; cursor: pointer; transition: background 0.2s;
+        }
+        .home-btn-dark:hover { background: rgba(245,232,224,0.13); }
+        .home-btn-outline {
+          flex: 1; background: transparent;
+          border: 1px solid rgba(200,100,120,0.3);
+          border-radius: 12px; color: #e07090;
+          font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+          padding: 12px; cursor: pointer; transition: background 0.2s;
+        }
+        .home-btn-outline:hover { background: rgba(200,80,110,0.08); }
+        .home-coupon-list::-webkit-scrollbar { width: 3px; }
+        .home-coupon-list::-webkit-scrollbar-thumb { background: rgba(200,100,120,0.3); border-radius: 2px; }
+      `}</style>
+
+      <div className="home-wrap">
+        <div className="home-orb1" />
+        <div className="home-orb2" />
+
+        <div className="home-card">
+          <div className="home-header">
+            <div className="home-icon">🎁</div>
+            <h1 className="home-title">Criar Talão Digital</h1>
+            <p className="home-subtitle">Monte um presente inesquecível e personalizado</p>
           </div>
-          <h1 className="text-2xl font-bold text-gray-800">Criar Talão Digital</h1>
-          <p className="text-gray-500 text-sm mt-1">Monte um presente inesquecível e personalizado</p>
-        </header>
 
-        {!generatedLink ? (
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">Título do Talão</label>
-              <input
-                type="text"
-                required
-                placeholder="Ex: Aniversário da Mamãe"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400"
-              />
-            </div>
+          {!generatedLink ? (
+            <form onSubmit={handleSubmit}>
+              <div className="home-field">
+                <label className="home-label">Título do Talão</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Ex: Aniversário da Mamãe"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  className="home-input"
+                />
+              </div>
 
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">Descrição curta</label>
-              <textarea
-                placeholder="Ex: Um presente cheio de mimos e carinho..."
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400 h-20 resize-none"
-              />
-            </div>
+              <div className="home-field">
+                <label className="home-label">Descrição curta</label>
+                <textarea
+                  placeholder="Ex: Um presente cheio de mimos e carinho..."
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  className="home-textarea"
+                />
+              </div>
 
-            <div className="border-t border-gray-100 pt-4">
-              <div className="flex justify-between items-center mb-2">
-                <label className="text-sm font-semibold text-gray-700">Cupons Adicionados</label>
-                <button
-                  type="button"
-                  onClick={handleAddCoupon}
-                  className="flex items-center gap-1 text-xs font-bold text-pink-500 hover:text-pink-600 transition"
-                >
-                  <Plus size={14} /> Adicionar Cupom
+              <hr className="home-divider" />
+
+              <div className="home-coupons-head">
+                <span className="home-coupons-label">Cupons</span>
+                <button type="button" onClick={handleAddCoupon} className="home-add-btn">
+                  <Plus size={13} /> Adicionar Cupom
                 </button>
               </div>
 
-              <div className="space-y-3 max-h-60 overflow-y-auto pr-1">
+              <div className="home-coupon-list">
                 {coupons.map((coupon, index) => (
-                  <div key={index} className="p-3 bg-gray-50 rounded-xl border border-gray-100 relative space-y-2">
+                  <div key={index} className="home-coupon-item">
+                    {coupons.length > 1 && (
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveCoupon(index)}
+                        className="home-remove-btn"
+                      >
+                        <Trash2 size={13} />
+                      </button>
+                    )}
                     <input
                       type="text"
                       required
                       placeholder="Título do Cupom (Ex: Vale Jantar)"
                       value={coupon.title}
                       onChange={(e) => handleCouponChange(index, 'title', e.target.value)}
-                      className="w-full bg-white px-3 py-1.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-pink-400"
+                      className="home-coupon-field"
                     />
                     <input
                       type="text"
                       placeholder="Descrição (Ex: Válido no restaurante X)"
                       value={coupon.description}
                       onChange={(e) => handleCouponChange(index, 'description', e.target.value)}
-                      className="w-full bg-white px-3 py-1.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-pink-400"
+                      className="home-coupon-field"
                     />
-                    {coupons.length > 1 && (
-                      <button
-                        type="button"
-                        onClick={() => handleRemoveCoupon(index)}
-                        className="absolute top-1 right-2 text-gray-400 hover:text-red-500 transition"
-                      >
-                        <Trash2 size={14} />
-                      </button>
-                    )}
                   </div>
                 ))}
               </div>
-            </div>
 
-            <button
-              type="submit"
-              disabled={createBookMutation.isPending}
-              className="w-full bg-pink-500 text-white font-bold py-3 rounded-xl hover:bg-pink-600 transition active:scale-98 disabled:bg-gray-300"
-            >
-              {createBookMutation.isPending ? 'Gerando Presente...' : 'Gerar Talão de Cupons'}
-            </button>
-          </form>
-        ) : (
-          <div className="text-center space-y-4 py-4">
-            <div className="text-green-500 font-semibold text-sm flex flex-col items-center gap-1">
-              🎉 Talão criado com sucesso!
-            </div>
-            <p className="text-gray-600 text-sm">Copie o link seguro abaixo e envie para quem vai ganhar o presente:</p>
-            <div className="bg-gray-50 p-3 rounded-xl border border-gray-200 text-xs font-mono break-all select-all text-gray-700">
-              {generatedLink}
-            </div>
-            <div className="flex gap-2">
               <button
-                onClick={() => navigate(`/book/${generatedLink.split('/').pop()}`)}
-                className="w-full bg-gray-800 text-white font-bold py-2.5 rounded-xl text-sm hover:bg-gray-900 transition"
+                type="submit"
+                disabled={createBookMutation.isPending}
+                className="home-submit"
               >
-                Visualizar Tela
+                {createBookMutation.isPending ? 'Gerando Presente...' : 'Gerar Talão de Cupons'}
               </button>
-              <button
-                onClick={() => setGeneratedLink('')}
-                className="w-full bg-gray-100 text-gray-600 font-bold py-2.5 rounded-xl text-sm hover:bg-gray-200 transition"
-              >
-                Criar Outro
-              </button>
+            </form>
+          ) : (
+            <div className="home-success">
+              <div className="home-success-icon">🎉</div>
+              <h2 className="home-success-title">Talão criado!</h2>
+              <p className="home-success-desc">
+                Copie o link abaixo e envie para quem vai ganhar o presente:
+              </p>
+              <div className="home-link-box" onClick={handleCopy}>
+                {generatedLink}
+              </div>
+              <p className="home-copy-hint">{copied ? '✓ Link copiado!' : 'Clique para copiar'}</p>
+              <div className="home-actions">
+                <button
+                  onClick={() => navigate(`/book/${generatedLink.split('/').pop()}`)}
+                  className="home-btn-dark"
+                >
+                  Visualizar Tela
+                </button>
+                <button
+                  onClick={() => {
+                    setGeneratedLink('');
+                    setTitle('');
+                    setDescription('');
+                    setCoupons([{ title: '', description: '' }]);
+                  }}
+                  className="home-btn-outline"
+                >
+                  Criar Outro
+                </button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
