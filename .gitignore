@@ -43,6 +43,7 @@ _ReSharper*/
 *.ntvs*
 *.njsproj
 *.sln.targets
+appsettings.json
 
 # Arquivos de segredos locais do .NET
 **/appsettings.Development.json
