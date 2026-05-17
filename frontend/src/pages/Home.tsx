@@ -147,7 +147,7 @@ export default function Home() {
             </div>
             <div className="flex gap-2">
               <button
-                onClick={() => navigator(`/book/${generatedLink.split('/').pop()}`)}
+                onClick={() => navigate(`/book/${generatedLink.split('/').pop()}`)}
                 className="w-full bg-gray-800 text-white font-bold py-2.5 rounded-xl text-sm hover:bg-gray-900 transition"
               >
                 Visualizar Tela
